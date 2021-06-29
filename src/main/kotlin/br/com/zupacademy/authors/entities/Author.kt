@@ -1,13 +1,22 @@
 package br.com.zupacademy.authors.entities
 
+import java.time.LocalDateTime
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+
+@Entity
 class Author(
-    private val name: String,
-    private val email: String,
-    private val description: String
+    val name: String,
+    val email: String,
+    val description: String
 ) {
 
-    override fun toString(): String {
-        return "Author(name='$name', email='$email', description='$description')"
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+    val createdAt: LocalDateTime = LocalDateTime.now()
 
 }

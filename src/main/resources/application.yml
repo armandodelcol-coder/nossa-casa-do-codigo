@@ -3,10 +3,14 @@ micronaut:
     name: nossaCasaDoCodigo
 datasources:
   default:
-    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/cdc_micronaut?createDatabaseIfNotExist=true&serverTimezone=UTC
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+    username: root
+    password: ${DB_PASSWORD:1234}
     schema-generate: CREATE_DROP
-    dialect: H2
-jpa.default.properties.hibernate.hbm2ddl.auto: update
+    dialect: "org.hibernate.dialect.MySQL5InnoDBDialect"
+jpa:
+  default:
+    properties:
+      hibernate.hbm2ddl.auto: update
+      hibernate.show_sql: true
