@@ -13,7 +13,9 @@ class NewAuthorController {
 
     @Post
     fun register(@Body @Valid request: NewAuthorRequest): String {
-        return request.toString()
+        println(request)
+        val author = request.toAuthor()
+        return author.toString()
     }
 
 }

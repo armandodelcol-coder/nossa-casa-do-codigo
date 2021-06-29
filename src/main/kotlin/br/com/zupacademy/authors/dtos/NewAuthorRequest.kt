@@ -1,5 +1,6 @@
 package br.com.zupacademy.authors.dtos
 
+import br.com.zupacademy.authors.entities.Author
 import io.micronaut.core.annotation.Introspected
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
@@ -10,4 +11,10 @@ data class NewAuthorRequest(
     @field:NotBlank val name: String,
     @field:NotBlank @field:Email val email: String,
     @field:NotBlank @field:Size(max = 400) val description: String
-)
+) {
+
+    fun toAuthor(): Author {
+        return Author(name, email, description)
+    }
+
+}
