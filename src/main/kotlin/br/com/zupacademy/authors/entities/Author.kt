@@ -8,9 +8,9 @@ import javax.persistence.Id
 
 @Entity
 class Author(
-    val name: String,
-    val email: String,
-    val description: String
+    var name: String,
+    var email: String,
+    var description: String
 ) {
 
     @Id
