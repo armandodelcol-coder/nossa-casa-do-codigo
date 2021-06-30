@@ -1,10 +1,8 @@
 package br.com.zupacademy.authors.entities
 
 import java.time.LocalDateTime
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import java.util.*
+import javax.persistence.*
 
 @Entity
 class Author(
@@ -17,6 +15,10 @@ class Author(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
+    @Column(nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now()
+
+    @Column(nullable = false, unique = true)
+    val code: String = UUID.randomUUID().toString()
 
 }

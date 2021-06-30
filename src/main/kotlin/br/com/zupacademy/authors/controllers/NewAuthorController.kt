@@ -20,7 +20,7 @@ class NewAuthorController(val authorRepository: AuthorRepository) {
         println(request)
         val author = request.toAuthor()
         authorRepository.save(author)
-        val uri: URI = UriBuilder.of("/autores/{id}").expand(mutableMapOf(Pair("id", author.id)))
+        val uri: URI = UriBuilder.of("/autores/{code}").expand(mutableMapOf(Pair("code", author.code)))
         return HttpResponse.created(uri)
     }
 

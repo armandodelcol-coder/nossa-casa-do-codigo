@@ -14,15 +14,15 @@ import java.util.*
 import javax.validation.Valid
 
 @Validated
-@Controller("/autores/{id}")
+@Controller("/autores/{code}")
 class UpdateAuthorController(private val authorRepository: AuthorRepository) {
 
     @Put
     fun update(
-        @PathVariable("id") id: Long,
+        @PathVariable("code") code: String,
         @Body @Valid updateAuthorRequest: UpdateAuthorRequest
     ): HttpResponse<AuthorDetailsResponse> {
-        val possibleAuthor: Optional<Author> = authorRepository.findById(id)
+        val possibleAuthor: Optional<Author> = authorRepository.findByCode(code)
         if (possibleAuthor.isEmpty) return HttpResponse.notFound()
 
         val author = possibleAuthor.get()
