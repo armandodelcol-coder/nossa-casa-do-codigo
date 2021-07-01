@@ -21,7 +21,8 @@ class NewAuthorController(
 
     @Post
     fun register(@Body @Valid request: NewAuthorRequest): HttpResponse<Any> {
-        val addressResponse = addressClient.search(request.zipcode)
+        val addressResponse = addressClient.searchInJson(request.zipcode)
+        // val addressResponse = addressClient.searchInXml(request.zipcode)
         val author = request.toAuthor(addressResponse.body())
         authorRepository.save(author)
         val uri: URI = UriBuilder.of("/autores/{code}").expand(mutableMapOf(Pair("code", author.code)))
