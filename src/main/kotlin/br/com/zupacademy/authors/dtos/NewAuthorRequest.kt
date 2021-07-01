@@ -4,7 +4,6 @@ import br.com.zupacademy.authors.entities.Address
 import br.com.zupacademy.authors.entities.Author
 import br.com.zupacademy.httpclients.dtos.AddressResponse
 import io.micronaut.core.annotation.Introspected
-import io.micronaut.http.HttpResponse
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size
