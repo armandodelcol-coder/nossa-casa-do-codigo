@@ -17,14 +17,15 @@ class ListOfAuthorsController(private val authorRepository: AuthorRepository) {
     fun listAll(
         @QueryValue(defaultValue = "") email: String,
         pageable: Pageable
-    ): MutableHttpResponse<Page<AuthorDetailsResponse>>? {
+    ): MutableHttpResponse<Any> {
         if (email.isBlank()) {
             val authors = authorRepository.findAll(pageable)
             return HttpResponse.ok(authors.map { author -> AuthorDetailsResponse(author) })
         }
 
-        val authors = authorRepository.findByEmailContaining(email, pageable)
-        return HttpResponse.ok(authors.map { author -> AuthorDetailsResponse(author) })
+        val possibleAuthor = authorRepository.findByEmail(email)
+        return if (possibleAuthor.isEmpty) HttpResponse.notFound()
+        else return HttpResponse.ok(AuthorDetailsResponse(possibleAuthor.get()))
     }
 
 }

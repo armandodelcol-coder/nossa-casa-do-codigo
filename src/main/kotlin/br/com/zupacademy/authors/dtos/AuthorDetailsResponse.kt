@@ -2,11 +2,18 @@ package br.com.zupacademy.authors.dtos
 
 import br.com.zupacademy.authors.entities.Author
 
-class AuthorDetailsResponse(author: Author) {
+class AuthorDetailsResponse(
+    val code: String,
+    val name: String,
+    val email: String,
+    val description: String
+) {
 
-    val code = author.code
-    val name = author.name
-    val email = author.email
-    val description = author.description
+    constructor(author: Author): this(
+        code = author.code,
+        name = author.name,
+        email = author.email,
+        description = author.description
+    )
 
 }

@@ -14,4 +14,6 @@ interface AuthorRepository : JpaRepository<Author, Long> {
 
     fun findByCode(code: String): Optional<Author>
 
+    fun findByEmail(email: String): Optional<Author>
+
 }
