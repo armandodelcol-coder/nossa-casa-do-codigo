@@ -35,13 +35,15 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.micronaut.xml:micronaut-jackson-xml")
 
     implementation("mysql:mysql-connector-java:5.1.6")
+
+    testImplementation("org.mockito:mockito-core:3.8.0")
+    testImplementation("com.h2database:h2")
 
 }
 
